@@ -78,5 +78,5 @@ src_compile() {
 
 src_install() {
 	insinto "$(get_erl_libs)/${P}"
-	doins -r ebin priv src
+	doins -r ebin include priv src
 }
