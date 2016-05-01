@@ -12,10 +12,12 @@ KDE_HANDBOOK="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
 EGIT_BRANCH="KDE/4.14"
+APPS_VERSION="15.12.1" # Don't forget to bump this
 
 DESCRIPTION="KDE libraries needed by all KDE programs"
+SRC_URI="mirror://kde/stable/applications/${APPS_VERSION}/src/${P}.tar.xz"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="cpu_flags_x86_3dnow acl alsa altivec +bzip2 +crypt debug doc fam jpeg2k
 kerberos libressl lzma cpu_flags_x86_mmx nls openexr +policykit spell
@@ -114,12 +116,7 @@ PDEPEND="
 		$(add_kdeapps_dep kfmclient '' 4.14.3)
 		x11-misc/xdg-utils
 	)
-	handbook? (
-		|| (
-			$(add_kdebase_dep khelpcenter '' 4.14.3)
-			kde-plasma/khelpcenter:5[compat(+)]
-		)
-	)
+	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( || (
 		>=sys-auth/polkit-kde-agent-0.99
 		kde-plasma/polkit-kde-agent

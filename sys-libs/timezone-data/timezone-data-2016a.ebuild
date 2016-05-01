@@ -15,7 +15,7 @@ SRC_URI="http://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.ta
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="nls leaps_timezone elibc_FreeBSD elibc_glibc"
 
 RDEPEND="!sys-libs/glibc[vanilla(+)]"
@@ -37,6 +37,7 @@ _emake() {
 src_compile() {
 	local LDLIBS
 	tc-export CC
+	append-lfs-flags #471102
 	if use elibc_FreeBSD || use elibc_Darwin ; then
 		append-cppflags -DSTD_INSPIRED #138251
 	fi

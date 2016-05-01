@@ -35,7 +35,7 @@ se_tvzon tr uk_atlas uk_bleb uk_rt uk_tvguide tv_check tv_combiner tv_pick_cgi"
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
 	>=dev-perl/XML-Twig-3.10
-	>=dev-perl/DateManip-5.42
+	>=dev-perl/Date-Manip-5.42
 	>=dev-perl/XML-Writer-0.6
 	virtual/perl-Memoize
 	virtual/perl-Storable
@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 	uk_bleb? ( dev-perl/IO-stringy dev-perl/Archive-Zip )
 	uk_rt? ( dev-perl/DateTime-TimeZone dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent dev-perl/DateTime >=dev-perl/HTML-Parser-3.34 )
 	uk_tvguide? ( dev-perl/URI dev-perl/HTTP-Cache-Transparent dev-perl/DateTime dev-perl/TimeDate )
-	tv_check? ( dev-perl/perl-tk dev-perl/Tk-TableMatrix )
+	tv_check? ( dev-perl/Tk dev-perl/Tk-TableMatrix )
 	tv_combiner? ( dev-perl/XML-LibXML )
 "
 

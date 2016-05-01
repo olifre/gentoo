@@ -68,10 +68,16 @@ src_install() {
 	insinto /etc/python-exec
 	doins "${T}"/python-exec.conf
 
-	# Create Python interpreter executable wrappers
 	local f
-	for f in python{,2,3}{,-config} 2to3 idle pydoc pyvenv; do
-		dosym python-exec2-c /usr/bin/"${f}"
+	for f in python{,2,3}; do
+		# symlink the C wrapper for python to avoid shebang recursion
+		# bug #568974
+		dosym python-exec2c /usr/bin/"${f}"
+	done
+	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
+		# those are python scripts (except for new python-configs)
+		# so symlink them via the python wrapper
+		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
 	done
 }
 
@@ -112,7 +118,28 @@ pkg_preinst() {
 		done
 
 		if [[ ${old_pythons[@]} ]]; then
-			einfo "Keeping the following Python preference: ${old_pythons[*]}"
+			elog "You seem to have just upgraded into the new version of python-exec"
+			elog "that uses python-exec.conf for configuration. The ebuild has attempted"
+			elog "to convert your previous configuration to the new format, resulting"
+			elog "in the following preferences (most preferred version first):"
+			elog
+			for py in "${old_pythons[@]}"; do
+				elog "  ${py}"
+			done
+			elog
+			elog "Those interpreters will be preferred when running Python scripts or"
+			elog "calling wrapped Python executables (python, python2, pydoc...)."
+			elog "If none of the preferred interpreters are supported, python-exec will"
+			elog "fall back to the newest supported Python version."
+			elog
+			elog "Please note that due to the ambiguous character of the old settings,"
+			elog "you may want to modify the preference list yourself. In order to do so,"
+			elog "open the following file in your favorite editor:"
+			elog
+			elog "  ${EROOT}etc/python-exec/python-exec.conf"
+			elog
+			elog "For more information on the new configuration format, please read"
+			elog "the comment on top of the installed configuration file."
 
 			local IFS=$'\n'
 			echo "${old_pythons[*]}" \

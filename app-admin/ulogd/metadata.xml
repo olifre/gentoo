@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>itumaykin+gentoo@gmail.com</email>
 		<name>Coacher</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -20,4 +21,7 @@
 		<flag name="nfacct">Build NFACCT input plugin to support traffic accounting via nfnetlink_acct.</flag>
 		<flag name="ulog">Build ULOG input plugin to support deprecated packet-based logging via ULOG target.</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://bugzilla.netfilter.org/enter_bug.cgi?product=ulogd</bugs-to>
+	</upstream>
 </pkgmetadata>

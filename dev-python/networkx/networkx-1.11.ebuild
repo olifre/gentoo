@@ -4,9 +4,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
 HOMEPAGE="http://networkx.github.io/ https://github.com/networkx/networkx"
@@ -14,14 +14,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples test"
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 COMMON_DEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]"
+	sci-libs/scipy[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
@@ -65,7 +65,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests -vv || die
+	virtx nosetests -vv || die
 }
 
 python_install_all() {

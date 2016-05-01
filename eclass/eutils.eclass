@@ -689,7 +689,7 @@ edos2unix() {
 #           a full path to an icon
 # type:     what kind of application is this?
 #           for categories:
-#           http://standards.freedesktop.org/menu-spec/latest/apa.html
+#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
 #           if unset, function tries to guess from package's category
 # fields:	extra fields to append to the desktop file; a printf string
 # @CODE
@@ -1731,7 +1731,7 @@ epatch_user() {
 
 	# don't clobber any EPATCH vars that the parent might want
 	local EPATCH_SOURCE check
-	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT}}; do
+	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT%/*}}; do
 		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
 		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
 		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}

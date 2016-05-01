@@ -2,6 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-libs/uchardet lacks sparc keyword. See bug #569114.
+media-video/mpv uchardet
+
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
+# Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
+# Missing keywords, bug #551580
+app-office/planner eds
+
 # Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
@@ -320,14 +337,6 @@ media-gfx/povray mkl
 
 # uses games-board/ggz-gtk-client
 games-strategy/freeciv ggz
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need dev-db/virtuoso-* keyworded
-dev-libs/soprano virtuoso
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need sys-auth/polkit keyworded
-app-admin/system-config-printer-common  policykit
 
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qtmultimedia is not keyworded, bug 293671

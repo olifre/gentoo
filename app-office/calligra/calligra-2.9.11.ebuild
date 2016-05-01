@@ -36,7 +36,7 @@ LICENSE="GPL-2"
 SLOT="4"
 
 if [[ ${KDE_BUILD_TYPE} == release ]] ; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
@@ -117,7 +117,7 @@ RDEPEND="
 	sybase? ( dev-db/freetds )
 	tiff? ( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype:2 )
-	vc? ( dev-libs/vc )
+	vc? ( <dev-libs/vc-1.0.0 )
 	xbase? ( dev-db/xbase )
 	calligra_features_kexi? (
 		>=dev-db/sqlite-3.8.7:3[extensions(+)]

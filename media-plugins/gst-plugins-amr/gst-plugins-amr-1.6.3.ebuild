@@ -8,10 +8,10 @@ GST_ORG_MODULE=gst-plugins-ugly
 inherit gstreamer
 
 DESCRIPTION="GStreamer plugin for AMRNB/AMRWB codec"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=media-libs/opencore-amr-0.1.3-r1[${MULTILIB_USEDEP}]"

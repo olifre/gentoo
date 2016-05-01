@@ -2,6 +2,43 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
+# Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
+# for the proxy-maintainers project
+# Unkeyworded deps, bug #581180
+app-admin/rsyslog grok
+
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Unmask Raspberry Pi support on arm.
+media-video/mpv -raspberry-pi
+
+# Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
+# Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
+# for the proxy-maintainers project
+# Unkeyworded deps, bug #564274
+app-admin/collectd collectd_plugins_gmond
+app-admin/collectd collectd_plugins_ipmi
+app-admin/collectd collectd_plugins_modbus
+app-admin/collectd collectd_plugins_oracle
+app-admin/collectd collectd_plugins_routeros
+app-admin/collectd collectd_plugins_sigrok
+app-admin/collectd collectd_plugins_tokyotyrant
+app-admin/collectd collectd_plugins_varnish
+app-admin/collectd collectd_plugins_virt
+
+# Markus Meier <maekke@gentoo.org> (02 Mar 2016)
+# unkeyworded deps for bug #573324
+sci-mathematics/flint ntl
+
+# Markus Meier <maekke@gentoo.org> (26 Feb 2016)
+# unmask scanner for net-print/hplip, bug #518456
+media-sound/moc timidity
+
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
 # James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
 # scrollview requires SWT, which is currently unsupported on ARM.
 app-text/tesseract scrollview
@@ -49,7 +86,7 @@ sys-auth/sssd samba
 
 # Markus Meier <maekke@gentoo.org> (03 Apr 2015)
 # Deps not yet stable or keyworded
-=media-libs/libsdl2-2.0.3-r200 fusionsound
+media-libs/libsdl2 fusionsound
 
 # Alexis Ballier <aballier@gentoo.org> (02 Apr 2015)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
@@ -58,12 +95,6 @@ media-libs/freeimage tiff
 # Markus Meier <maekke@gentoo.org> (03 Mar 2015)
 # Unkeyworded deps, bug #540540
 sys-auth/sssd augeas
-
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not keyworded on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 logger pkcs11 sasl
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (09 Feb 2015)
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
@@ -163,7 +194,6 @@ dev-qt/qt-mobility messaging
 # unkeyworded deps
 kde-apps/gwenview semantic-desktop
 kde-apps/okular dpi
-kde-apps/nepomuk-core migrator
 
 # Yixun Lan <dlan@gentoo.org> (12 Apr 2014)
 # app-emulation/qemu is not keyworded on arm arch.
@@ -306,7 +336,7 @@ media-gfx/pstoedit emf
 net-misc/openconnect java
 dev-util/oprofile java
 =dev-db/qdbm-1.8.78-r1 java
-=dev-libs/beecrypt-4.2.1 java
+dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 =dev-libs/xapian-bindings-1.2.12 java
 =dev-libs/xapian-bindings-1.2.12-r1 java

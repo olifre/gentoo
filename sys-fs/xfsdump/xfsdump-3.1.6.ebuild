@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
 IUSE="nls"
 
 RDEPEND="sys-fs/e2fsprogs
@@ -33,6 +33,7 @@ src_prepare() {
 		|| die
 	epatch "${FILESDIR}"/${PN}-3.0.5-prompt-overflow.patch #335115
 	epatch "${FILESDIR}"/${PN}-3.0.4-no-symlink.patch #311881
+	epatch "${FILESDIR}"/${PN}-3.1.6-linguas.patch #561664
 }
 
 src_configure() {

@@ -12,12 +12,12 @@ SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="colordiff libressl"
 
 RDEPEND=">=dev-libs/glib-2.6
 		sys-libs/ncurses:0
-		libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 		colordiff? ( app-misc/colordiff )"
 DEPEND="virtual/pkgconfig

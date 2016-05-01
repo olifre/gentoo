@@ -16,7 +16,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="multilib"
 
 DEPEND="app-arch/xz-utils
@@ -28,7 +28,7 @@ has sandbox_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS="${EBUILD_D
 
 sandbox_death_notice() {
 	ewarn "If configure failed with a 'cannot run C compiled programs' error, try this:"
-	ewarn "FEATURES=-sandbox emerge sandbox"
+	ewarn "FEATURES='-sandbox -usersandbox' emerge sandbox"
 }
 
 sb_get_install_abis() { use multilib && get_install_abis || echo ${ABI:-default} ; }

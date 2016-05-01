@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ if [[ ${PV} == "9999" ]] ; then
 		media-fonts/urw-fonts"
 else
 	SRC_URI="http://downloads.ganeti.org/releases/${SERIES}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Ganeti is a virtual server management software tool"
@@ -41,6 +41,7 @@ USER_PREFIX="${GANETI_USER_PREFIX:-"gnt-"}"
 GROUP_PREFIX="${GANETI_GROUP_PREFIX:-"${USER_PREFIX}"}"
 
 HASKELL_DEPS=">=dev-lang/ghc-6.12:0=
+	<dev-lang/ghc-7.8
 	dev-haskell/json:0=
 	dev-haskell/curl:0=
 	dev-haskell/network:0=
@@ -194,7 +195,10 @@ src_install () {
 	insinto /etc/logrotate.d
 	newins doc/examples/ganeti.logrotate ${PN}
 
-	keepdir /var/{lib,log}/${PN}/
+	# need to dodir rather than keepdir here (bug #552482)
+	dodir /var/lib/${PN}
+
+	keepdir /var/log/${PN}/
 	keepdir /usr/share/${PN}/${SERIES}/os/
 	keepdir /var/lib/ganeti-storage/{export,file,shared}/
 

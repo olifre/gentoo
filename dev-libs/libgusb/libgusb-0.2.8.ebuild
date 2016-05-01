@@ -10,11 +10,11 @@ inherit eutils gnome2 multilib-minimal vala
 
 DESCRIPTION="GObject wrapper for libusb"
 HOMEPAGE="https://github.com/hughsie/libgusb"
-SRC_URI="http://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
+SRC_URI="https://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 IUSE="+introspection static-libs vala"
 REQUIRED_USE="vala? ( introspection )"

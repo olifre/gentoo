@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
@@ -40,7 +40,7 @@ RDEPEND="
 		chipcard? ( sys-libs/libchipcard )
 	)
 	python? ( ${PYTHON_DEPS} )
-	quotes? ( dev-perl/DateManip
+	quotes? ( dev-perl/Date-Manip
 		>=dev-perl/Finance-Quote-1.11
 		dev-perl/HTML-TableExtract )
 	sqlite? ( >=dev-db/libdbi-0.9.0

@@ -6,12 +6,12 @@ EAPI=5
 inherit eutils multilib pam pax-utils systemd user
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/polkit"
-SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="examples gtk +introspection jit kde nls pam selinux systemd test"
 
 CDEPEND="

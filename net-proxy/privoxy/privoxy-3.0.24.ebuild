@@ -18,7 +18,7 @@ IUSE="+acl editor external-filters +fast-redirects +force graceful-termination
 +image-blocking ipv6 lfs png-images selinux +stats +threads toggle
 whitelists +zlib"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ppc ppc64 sparc x86 ~x86-fbsd"
 LICENSE="GPL-2"
 
 DEPEND="dev-libs/libpcre
@@ -29,6 +29,15 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="toggle? ( editor )"
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
+
+pkg_pretend() {
+	if ! use threads; then
+		ewarn
+		ewarn "Privoxy may be very slow without threads support, consider to enable them."
+		ewarn "See also http://www.privoxy.org/faq/trouble.html#GENTOO-RICERS"
+		ewarn
+	fi
+}
 
 pkg_setup() {
 	enewgroup privoxy
@@ -43,7 +52,6 @@ src_prepare() {
 }
 
 src_configure() {
-
 	econf \
 		$(use_enable acl acl-support) \
 		$(use_enable editor) \

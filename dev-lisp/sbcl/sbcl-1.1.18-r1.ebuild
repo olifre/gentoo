@@ -31,7 +31,7 @@ DEPEND="${CDEPEND}
 		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
 		pax_kernel? ( sys-apps/paxctl sys-apps/elfix )"
 RDEPEND="${CDEPEND}
-		 elibc_glibc? ( >=sys-libs/glibc-2.3 || ( >=sys-libs/glibc-2.6 ) )"
+		elibc_glibc? ( >=sys-libs/glibc-2.6 )"
 
 # Disable warnings about executable stacks, as this won't be fixed soon by upstream
 QA_EXECSTACK="usr/bin/sbcl"
@@ -85,6 +85,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/concurrency-test.patch
 	# bug #486552
 	epatch "${FILESDIR}"/bsd-sockets-test.patch
+	# bug #577514
+	epatch "${FILESDIR}"/sbcl-1.1.18-graphiz-2.38.patch
 
 	# To make the hardened compiler NOT compile with -fPIE -pie
 	if gcc-specs-pie ; then
@@ -108,11 +110,11 @@ src_prepare() {
 	# #define SBCL_HOME ...
 	sed "s,/usr/local/lib,/usr/$(get_libdir),g" -i src/runtime/runtime.c || die
 
-	find . -type f -name .cvsignore -delete
+	# Avoid sandbox violation, bug #572478
+	sed -i -e "/(sb-posix:rmdir /s%\"/\"%\"${WORKDIR}\"%" \
+		contrib/sb-posix/posix-tests.lisp || die
 
-	# bug #572478
-	sed "s%(sb-posix:rmdir #-win32 \"/\"%(sb-posix:rmdir #-win32	\
-		\"$(PORTAGE_BUILDDIR)\"%" -i contrib/sb-posix/posix-tests.lisp
+	find . -type f -name .cvsignore -delete
 }
 
 src_configure() {

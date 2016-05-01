@@ -11,19 +11,22 @@ HOMEPAGE="https://github.com/lastpass/lastpass-cli"
 SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+LICENSE="GPL-2+"
+KEYWORDS="amd64 x86"
 IUSE="libressl X +pinentry"
 
 RDEPEND="
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-misc/curl
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )
 "
-DEPEND="${RDEPEND} app-text/asciidoc"
+DEPEND="${RDEPEND}
+	app-text/asciidoc
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	tc-export CC
